@@ -14,13 +14,21 @@ const getSingleDrink = async (id) => {
 async function SingleDrinkPage({ params }) {
   const data = await getSingleDrink(params.id);
   const title = data?.drinks[0]?.strDrink;
-  const image = data?.drinks[0]?.strDrinkThumb;
+  const imageSrc = data?.drinks[0]?.strDrinkThumb;
 
   return (
     <div>
       <Link href="/drinks" className="btn btn-primary mt-8 mb-12">
         back to drinks
       </Link>
+      <Image
+        src={imageSrc}
+        alt={title}
+        width={300}
+        height={300}
+        className="w-48 h-48 rounded-lg shadow-md mb-4"
+        priority
+      />
       <h1 className="text-7xl">{title}</h1>
     </div>
   );
